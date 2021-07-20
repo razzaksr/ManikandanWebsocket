@@ -1,0 +1,94 @@
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _socketIoClient = require('socket.io-client');
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  var _socketIoClientDefault = _parcelHelpers.interopDefault(_socketIoClient);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactDom = require('react-dom');
+  var _reactDomDefault = _parcelHelpers.interopDefault(_reactDom);
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _recharts = require('recharts');
+  var _jsxFileName = "D:\\Course backups\\Javascript\\Manikandan\\LiveFeed\\cpulive\\src\\client.js", _s = $RefreshSig$();
+  const socket = _socketIoClientDefault.default('http://localhost:3000', {
+    transports: ['websocket', 'polling']
+  });
+  const App = ({}) => {
+    _s();
+    const [data, setData] = _react.useState([]);
+    _react.useEffect(() => {
+      socket.on('cpu', cpuPercent => {
+        setData(currentData => [...currentData, cpuPercent]);
+      });
+    }, []);
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 27,
+          columnNumber: 7
+        }
+      }, "Real Time CPU Usage"), /*#__PURE__*/_reactDefault.default.createElement(_recharts.LineChart, {
+        width: 500,
+        height: 300,
+        data: data,
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28,
+          columnNumber: 7
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_recharts.XAxis, {
+        dataKey: "name",
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29,
+          columnNumber: 9
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement(_recharts.YAxis, {
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30,
+          columnNumber: 9
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement(_recharts.Line, {
+        dataKey: "value",
+        __self: undefined,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31,
+          columnNumber: 9
+        }
+      })))
+    );
+  };
+  _s(App, "IEMTtLVFIuToo7X/raQbJAxzNQU=");
+  _c = App;
+  _reactDomDefault.default.render(/*#__PURE__*/_reactDefault.default.createElement(App, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 17
+    }
+  }), document.getElementById('root'));
+  var _c;
+  $RefreshReg$(_c, "App");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

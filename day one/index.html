@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple web socket</title>
+    </head>
+    <body>
+        <script>
+            const client=new WebSocket("ws://localhost:9999");
+
+            client.addEventListener("open",()=>{
+                console.log("Client connected");
+
+                client.send("I want to do course in zealous");
+            });
+
+            client.addEventListener("message",({data})=>{
+                console.log("Server replied: "+data);
+            });
+        </script>
+    </body>
+</html>
